@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <title>RPN Calculator</title>
+</head>
+<body>
+   
+    <!-- Ui for calculaotr -->
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-4 col-md-6 col-sm-8">  
+                <div class="card mt-5">
+                    <div class="card-body">
+                        <form>
+                            <div class="form-group">
+                                <input readonly="readonly" class="form-control" style="text-align: center; margin-top: 5px" id="Input" type="text">
+                            </div>
+                        </form>
+                        <div class="d-flex justify-content-between">
+                            <button id="allclear" class="btn btn-outline-danger">AC</button>
+                            
+                           
+                        </div>   
+                        <br>
+                        <div class="d-flex justify-content-between">
+                            <button id="7" onclick="addNumber(7)" class="btn btn-light">7</button>
+                            <button id="8" onclick="addNumber(8)" class="btn btn-light">8</button>
+                            <button id="9" onclick="addNumber(9)" class="btn btn-light">9</button>
+                            <button id="minus" class="btn btn-light">-</button>
+                        </div>
+                        <br>
+                        <div class="d-flex justify-content-between">
+                            <button id="4" onclick="addNumber(4)" class="btn btn-light">4</button>
+                            <button id="5" onclick="addNumber(5)" class="btn btn-light">5</button>
+                            <button id="6" onclick="addNumber(6)" class="btn btn-light">6</button>
+                            <button id="plus" class="btn btn-light">+</button>
+                        </div>
+                        <br>
+                        <div class="d-flex justify-content-between">
+                            <button id="1" onclick="addNumber(1)" class="btn btn-light">1</button>
+                            <button id="2" onclick="addNumber(2)" class="btn btn-light">2</button>
+                            <button id="3" onclick="addNumber(3)" class="btn btn-light">3</button>
+                            <button id="divide" class="btn btn-light">/</button>
+                        </div>
+                        <br>
+                        <div class="d-flex justify-content-between">
+                                <button id="0" onclick="addNumber(0)" class="btn btn-light">0</button>
+                                <button id="enter" class="btn btn-light">Enter</button>
+                                <button id="clear" class="btn btn-outline-danger">C</button>
+                                <button id="multiply" class="btn btn-light">*</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

@@ -61,6 +61,7 @@
     </div>
     <script>
         var clickop = false;
+        var clickEnter = false;
         const arrayStore = new Array();
         var U_input = document.getElementById('U_Input');
         var input = document.getElementById('Input');
@@ -76,14 +77,14 @@
                 input.value='';
             }
             input.value += num; 
+            clickop = false;
         }
 
         function Enter() {
             arrayStore.push(input.value);
             U_input.value = arrayStore;
-            return input.value='0'; 
-
-
+            clickEnter = true;
+            return input.value='0';  
         }
 
         function Clear() {
@@ -101,7 +102,11 @@
             //so here we do all this
             
             if (clickop == false){
-                arrayStore.push(input.value);
+                //we need to check if enter is clicked for not pulling remaining in input
+                if(clickEnter == false){
+                    arrayStore.push(input.value);
+                } 
+                clickEnter = false; 
             }
             //stopping array to calculate if only one left
             if (arrayStore.length > 1) {
@@ -112,8 +117,10 @@
             }
             U_input.value = arrayStore;
             input.value = sum_val;
-            clickop = true;
+            clickop = true; 
+            console.log(clickop);
         }
+        
         
 
     </script>

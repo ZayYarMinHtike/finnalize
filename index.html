@@ -37,7 +37,7 @@
                             <button id="4" onclick="addNumber(4)" class="btn btn-light">4</button>
                             <button id="5" onclick="addNumber(5)" class="btn btn-light">5</button>
                             <button id="6" onclick="addNumber(6)" class="btn btn-light">6</button>
-                            <button id="plus" class="btn btn-light">+</button>
+                            <button id="plus" onclick="Sum()" class="btn btn-light">+</button>
                         </div>
                         <br>
                         <div class="d-flex justify-content-between">
@@ -60,14 +60,29 @@
     </div>
     <script>
         const arrayStore = new Array();
+        var input = document.getElementById('Input');
 
         function addNumber(num) {
-            document.getElementById('Input').value += num; 
+            //we need to get rid of remaining 0 from storing array
+            if(input.value == '0'){
+                input.value='';
+            }
+            input.value += num; 
         }
 
         function Enter() {
-            arrayStore.push(document.getElementById('Input').value);
-            return document.getElementById('Input').value='0';
+            arrayStore.push(input.value);
+            return input.value='0';    
+        }
+        console.log(arrayStore);
+
+        function Sum() {
+            //now we have problem here not carrying input all together unless Enter
+            var numb2= parseInt(arrayStore.pop());
+            var numb1= parseInt(arrayStore.pop());
+            sum_val = numb1 + numb2;
+            arrayStore.push(sum_val);
+            input.value = sum_val;
         }
     </script>
 </body>

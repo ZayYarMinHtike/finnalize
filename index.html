@@ -17,11 +17,12 @@
                     <div class="card-body">
                         <form>
                             <div class="form-group">
+                                <input readonly="readonly" class="form-control" style="text-align: center" id="U_Input" type="text">
                                 <input readonly="readonly" class="form-control" style="text-align: center; margin-top: 5px" id="Input" type="text">
                             </div>
                         </form>
                         <div class="d-flex justify-content-between">
-                            <button id="allclear" class="btn btn-outline-danger">AC</button>
+                            <button id="allclear" onclick="Clear()" class="btn btn-outline-danger">AC</button>
                             
                            
                         </div>   
@@ -48,10 +49,10 @@
                         </div>
                         <br>
                         <div class="d-flex justify-content-between">
-                                <button id="0" onclick="addNumber(0)" class="btn btn-light">0</button>
-                                <button id="enter" onclick="Enter()" class="btn btn-light">Enter</button>
-                                <button id="clear" class="btn btn-outline-danger">C</button>
-                                <button id="multiply" class="btn btn-light">*</button>
+                            <button id="0" onclick="addNumber(0)" class="btn btn-light">0</button>
+                            <button id="enter" onclick="Enter()" class="btn btn-light">Enter</button>
+                            <button id="clear" onclick="CleanInput()" class="btn btn-outline-danger">C</button>
+                            <button id="multiply" class="btn btn-light">*</button>
                         </div>
                     </div>
                 </div>
@@ -61,8 +62,11 @@
     <script>
         var clickop = false;
         const arrayStore = new Array();
+        var U_input = document.getElementById('U_Input');
         var input = document.getElementById('Input');
+        input.value = 0;
 
+        
         function addNumber(num) {
             //we need to know if operators have been clicked
             if (clickop == true){
@@ -76,9 +80,20 @@
 
         function Enter() {
             arrayStore.push(input.value);
-            return input.value='0';    
+            U_input.value = arrayStore;
+            return input.value='0'; 
+
+
         }
-        console.log(arrayStore);
+
+        function Clear() {
+            arrayStore.length = 0;
+            document.getElementById('Input').value='0';
+        }
+
+        function CleanInput() {
+            document.getElementById('Input').value='0';
+        }
 
         function Sum() {
             //we need to call the input value together
@@ -88,15 +103,19 @@
             if (clickop == false){
                 arrayStore.push(input.value);
             }
+            //stopping array to calculate if only one left
             if (arrayStore.length > 1) {
             var numb2= parseInt(arrayStore.pop());
             var numb1= parseInt(arrayStore.pop());
             sum_val = numb1 + numb2;
             arrayStore.push(sum_val);
             }
+            U_input.value = arrayStore;
             input.value = sum_val;
             clickop = true;
         }
+        
+
     </script>
 </body>
 </html>

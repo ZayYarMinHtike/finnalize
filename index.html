@@ -59,6 +59,7 @@
         </div>
     </div>
     <script>
+        var clickop = false;
         const arrayStore = new Array();
         var input = document.getElementById('Input');
 
@@ -77,12 +78,19 @@
         console.log(arrayStore);
 
         function Sum() {
-            //now we have problem here not carrying input all together unless Enter
+            //we need to call the input value together
+            // another prob: result input always push into array
+            //so here we do all this
+            
+            if (clickop == false){
+                arrayStore.push(input.value);
+            }
             var numb2= parseInt(arrayStore.pop());
             var numb1= parseInt(arrayStore.pop());
             sum_val = numb1 + numb2;
             arrayStore.push(sum_val);
             input.value = sum_val;
+            clickop = true;
         }
     </script>
 </body>

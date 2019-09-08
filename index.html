@@ -49,7 +49,7 @@
                         <br>
                         <div class="d-flex justify-content-between">
                                 <button id="0" onclick="addNumber(0)" class="btn btn-light">0</button>
-                                <button id="enter" class="btn btn-light">Enter</button>
+                                <button id="enter" onclick="Enter()" class="btn btn-light">Enter</button>
                                 <button id="clear" class="btn btn-outline-danger">C</button>
                                 <button id="multiply" class="btn btn-light">*</button>
                         </div>
@@ -58,6 +58,17 @@
             </div>
         </div>
     </div>
+    <script>
+        const arrayStore = new Array();
 
+        function addNumber(num) {
+            document.getElementById('Input').value += num; 
+        }
+
+        function Enter() {
+            arrayStore.push(document.getElementById('Input').value);
+            return document.getElementById('Input').value='0';
+        }
+    </script>
 </body>
 </html>

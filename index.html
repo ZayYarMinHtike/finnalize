@@ -31,7 +31,7 @@
                             <button id="7" onclick="addNumber(7)" class="btn btn-light">7</button>
                             <button id="8" onclick="addNumber(8)" class="btn btn-light">8</button>
                             <button id="9" onclick="addNumber(9)" class="btn btn-light">9</button>
-                            <button id="minus" class="btn btn-light">-</button>
+                            <button id="minus" onclick="Substr()" class="btn btn-light">-</button>
                         </div>
                         <br>
                         <div class="d-flex justify-content-between">
@@ -45,14 +45,14 @@
                             <button id="1" onclick="addNumber(1)" class="btn btn-light">1</button>
                             <button id="2" onclick="addNumber(2)" class="btn btn-light">2</button>
                             <button id="3" onclick="addNumber(3)" class="btn btn-light">3</button>
-                            <button id="divide" class="btn btn-light">/</button>
+                            <button id="divide" onclick="Divide()" class="btn btn-light">/</button>
                         </div>
                         <br>
                         <div class="d-flex justify-content-between">
                             <button id="0" onclick="addNumber(0)" class="btn btn-light">0</button>
                             <button id="enter" onclick="Enter()" class="btn btn-light">Enter</button>
                             <button id="clear" onclick="CleanInput()" class="btn btn-outline-danger">C</button>
-                            <button id="multiply" class="btn btn-light">*</button>
+                            <button id="multiply" onclick="Multiply()" class="btn btn-light">*</button>
                         </div>
                     </div>
                 </div>
@@ -78,18 +78,22 @@
             }
             input.value += num; 
             clickop = false;
+            clickEnter = false;
         }
 
         function Enter() {
             arrayStore.push(input.value);
             U_input.value = arrayStore;
             clickEnter = true;
-            return input.value='0';  
+            return input.value='0'; 
+ 
+            
         }
 
         function Clear() {
             arrayStore.length = 0;
             document.getElementById('Input').value='0';
+            document.getElementById('U_Input').value='';
         }
 
         function CleanInput() {
@@ -102,7 +106,6 @@
             //so here we do all this
             
             if (clickop == false){
-                //we need to check if enter is clicked for not pulling remaining in input
                 if(clickEnter == false){
                     arrayStore.push(input.value);
                 } 
@@ -118,11 +121,67 @@
             U_input.value = arrayStore;
             input.value = sum_val;
             clickop = true; 
-            console.log(clickop);
         }
-        
-        
 
+        function Substr() {
+     
+            if (clickop == false){
+                if(clickEnter == false){
+                    arrayStore.push(input.value);
+                } 
+                clickEnter = false; 
+            }
+            //stopping array to calculate if only one left
+            if (arrayStore.length > 1) {
+            var numb2= parseInt(arrayStore.pop());
+            var numb1= parseInt(arrayStore.pop());
+            sub_val = numb1 - numb2;
+            arrayStore.push(sub_val);
+            }
+            U_input.value = arrayStore;
+            input.value = sub_val;
+            clickop = true; 
+        }
+
+        function Multiply() {
+
+            if (clickop == false){
+                if(clickEnter == false){
+                    arrayStore.push(input.value);
+                } 
+                clickEnter = false; 
+            }
+            //stopping array to calculate if only one left
+            if (arrayStore.length > 1) {
+            var numb2= parseInt(arrayStore.pop());
+            var numb1= parseInt(arrayStore.pop());
+            mul_val = numb1 * numb2;
+            arrayStore.push(mul_val);
+            }
+            U_input.value = arrayStore;
+            input.value = mul_val;
+            clickop = true; 
+        }
+
+        function Divide() {
+            
+            if (clickop == false){
+                if(clickEnter == false){
+                    arrayStore.push(input.value);
+                } 
+                clickEnter = false; 
+            }
+
+            if (arrayStore.length > 1) {
+            var numb2= parseInt(arrayStore.pop());
+            var numb1= parseInt(arrayStore.pop());
+            div_val = numb1 / numb2;
+            arrayStore.push(div_val);
+            }
+            U_input.value = arrayStore;
+            input.value = div_val;
+            clickop = true; 
+        }
     </script>
 </body>
 </html>

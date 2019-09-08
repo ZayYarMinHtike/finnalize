@@ -64,6 +64,9 @@
         var input = document.getElementById('Input');
 
         function addNumber(num) {
+            //we need to know if operators have been clicked
+            if (clickop == true){
+                input.value=''};
             //we need to get rid of remaining 0 from storing array
             if(input.value == '0'){
                 input.value='';
@@ -85,10 +88,12 @@
             if (clickop == false){
                 arrayStore.push(input.value);
             }
+            if (arrayStore.length > 1) {
             var numb2= parseInt(arrayStore.pop());
             var numb1= parseInt(arrayStore.pop());
             sum_val = numb1 + numb2;
             arrayStore.push(sum_val);
+            }
             input.value = sum_val;
             clickop = true;
         }
